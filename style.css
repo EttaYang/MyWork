@@ -159,16 +159,10 @@ h1 {
 .avatar {
   width: 148px;
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
+  display: block;
   margin-bottom: 24px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 28%, #fef3c7 0 18%, transparent 19%),
-    linear-gradient(135deg, #0f766e, #2563eb 52%, #c2410c);
-  color: #ffffff;
-  font-size: 42px;
-  font-weight: 800;
+  object-fit: cover;
 }
 
 .profile-name {
