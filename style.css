@@ -201,47 +201,57 @@ h1 {
 }
 
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  --work-image-height: clamp(240px, 34vw, 410px);
+  display: flex;
   gap: 24px;
   margin-top: 26px;
+  padding: 0 0 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--accent) var(--line);
+  scrollbar-width: thin;
+}
+
+.work-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.work-grid::-webkit-scrollbar-track {
+  background: var(--line);
+  border-radius: 999px;
+}
+
+.work-grid::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 999px;
 }
 
 .work-card {
-  position: relative;
-  min-width: 0;
+  flex: 0 0 auto;
+  width: max-content;
   margin: 0;
   overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 12px 30px rgba(31, 41, 51, 0.08);
-}
-
-.work-card-featured {
-  grid-column: 1 / -1;
+  scroll-snap-align: start;
 }
 
 .work-card img {
   display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  transition: transform 500ms ease;
-}
-
-.work-card-featured img {
-  aspect-ratio: 2 / 1;
-}
-
-.work-card:hover img {
-  transform: scale(1.025);
+  width: auto;
+  height: var(--work-image-height);
+  max-width: none;
+  object-fit: contain;
 }
 
 .work-card figcaption {
   display: flex;
   align-items: center;
   gap: 14px;
+  width: 100%;
   padding: 16px 18px 18px;
 }
 
@@ -312,16 +322,8 @@ h1 {
   }
 
   .work-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .work-card-featured {
-    grid-column: auto;
-  }
-
-  .work-card-featured img {
-    aspect-ratio: 16 / 9;
+    --work-image-height: clamp(190px, 62vw, 280px);
+    gap: 16px;
   }
 
   .site-footer {
